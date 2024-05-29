@@ -1,6 +1,6 @@
 ﻿namespace Checkpoint2
 {
-    enum QueryType
+    public enum QueryType
     {
         Category,
         Name,
@@ -8,7 +8,7 @@
     }
     class QueryCounter
     {
-        QueryType[] queryTypes = [QueryType.Category, QueryType.Name, QueryType.Price];
+        static QueryType[] queryTypes = [QueryType.Category, QueryType.Name, QueryType.Price];
         int index = -1;
 
         public QueryType NextType { get
@@ -18,7 +18,7 @@
             } 
         }
 
-        public QueryType LastType { get
+        static public QueryType LastType { get
             {
                 return queryTypes.Last();
             } 
