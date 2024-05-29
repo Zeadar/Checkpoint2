@@ -4,29 +4,18 @@ namespace Checkpoint2
 {
 	public class ProductQuery
 	{
-		public static readonly Dictionary<QueryType, string> messages = new Dictionary<QueryType, string>()
-		{
-			{ QueryType.Category,  "Enter Category: > "},
-			{ QueryType.Name, "Enter Product Name: > " },
-			{ QueryType.Price, "Enter Price: > " },
-		};
 		Dictionary<QueryType, string> inputs = new Dictionary<QueryType, string>();
         List<ProductItem> products = new List<ProductItem>();
 		
-        public bool QueryNext(QueryType type, string input)
+        public bool Next(QueryType type, string input)
 		{
-			if (input.Trim().ToUpper() == "Q")
-			{
-				return false;
-			}
-
             switch (type)
 			{
 				case QueryType.Price:
                     
 					if(int.TryParse(input, out int price))
 					{
-                        inputs.Add(type, price.ToString());
+						inputs[type] = price.ToString();
                     } else
 					{
                         Console.WriteLine("\"Price\" is not a number.");
@@ -34,17 +23,26 @@ namespace Checkpoint2
                     }
                     break;
 				default:
-                    inputs.Add(type, input);
-					break;
+					inputs[type] = input;
+                    break;
             }
+
+			if (type == QueryCounter.LastType)
+			{
+				ProductItem prod = new ProductItem(inputs[QueryType.Category], inputs[QueryType.Name], inputs[QueryType.Price]);
+                products.Add(prod);
+				Console.WriteLine("Entered " + prod);
+			}
 
             return true;
 		}
 
 		public void Present() {
+			Console.ForegroundColor = ConsoleColor.Green;
 			foreach (ProductItem item in products) {
                 Console.WriteLine(item);
             }
+			Console.ResetColor();
 		}
 	}
 

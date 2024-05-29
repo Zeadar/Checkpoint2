@@ -1,10 +1,10 @@
 ﻿namespace Checkpoint2
 {
-    class ProductItem(string category, string name, int price)
+    class ProductItem(string category, string name, string price)
     {
         public string Category { get; set; } = category;
         public string Name { get; set; } = name;
-        public int Price { get; set; } = price;
+        public String Price { get; set; } = price;
 
         public override string ToString()
         {
