@@ -5,7 +5,7 @@
 		Dictionary<QueryType, string> inputs = new Dictionary<QueryType, string>();
         List<ProductItem> products = new List<ProductItem>();
 		
-        public bool Next(QueryType type, string input)
+        public bool Enter(QueryType type, string input)
 		{
 
             if (input.Length > 20)

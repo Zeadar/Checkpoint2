@@ -26,7 +26,7 @@ void Start()
             break;
         }
 
-        if(!query.Next(type, input)){
+        if(!query.Enter(type, input)){
             queryCounter.Reset();
         }
     }
