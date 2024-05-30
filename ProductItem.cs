@@ -4,11 +4,13 @@
     {
         public string Category { get; set; } = category;
         public string Name { get; set; } = name;
-        public String Price { get; set; } = price;
+        public string Price { get; set; } = price;
 
         public override string ToString()
         {
-            return Category.PadRight(10) + Name.PadRight(10) + Price;
+            //Price padding is need for consistency in background color
+            //when presenting the table.
+            return Category.PadRight(25) + Name.PadRight(25) + Price.PadRight(25);
         }
     }
 }
